@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="ezone.css">
+    <script src="ezone.js"></script>
+    <script>
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 640) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+<body>
+    <div class="nave">
+        <div class="left">
+            <a href="javascript:history.go(-1);" id="back">
+            </a>
+        </div>
+        <div class="center">
+            <h1 class="biaoti">
+                机电楼
+            </h1>
+            <p id="content">
+                第一层
+            </p>
+        </div>
+        <div class="right">
+            <div id="floor">
+            </div>
+        </div>
+    </div>
+    <div class="bg">
+        <ul id="zonelist">
+            <li class="sjx">
+            </li>
+            <div class="clear">
+            </div>
+            <li>第一层</li>
+            <li>第二层</li>
+            <li>第三层</li>
+            <li>第四层</li>
+            <li>第五层</li>
+            <li>第六层</li>
+        </ul>
+        <div class="clear">
+        </div>
+        <div class="baowei">
+        <div id="photos">
+            <img src="e1.jpg" width="16.666%" height="100%">
+            <img src="e2.jpg" width="16.666%" height="100%">
+            <img src="e3.jpg" width="16.666%" height="100%">
+            <img src="e4.jpg" width="16.666%" height="100%">
+            <img src="e5.jpg" width="16.666%" height="100%">
+            <img src="e6.jpg" width="16.666%" height="100%">
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
