@@ -3,6 +3,7 @@ window.onload = function() {
     var y = document.getElementById("search-text")
     var z = document.getElementById("btn");
     var oMask = document.createElement("div");
+    var omap = document.getElementById("map");
 
     function openNew() {
         oMask.id = "mask";
@@ -15,17 +16,49 @@ window.onload = function() {
         y.value = "";
         x.style.display = "block";
         z.style.backgroundImage = "url(z.png)";
-        z.onclick = function() {
-            x.style.display="none";
-            y.value = "";
-        }
+        if (y.value = "")
+            z.onclick = function() {
+                x.style.display = "none";
+                y.value = "";
+            }
     }
     y.onblur = function() {
-        document.body.removeChild(oMask);
         y.value = "Search";
         z.style.backgroundImage = "url(search.png)";
     }
-   
+
+    $("#search-text").click(function(e) {        
+        $("#zonelist").show();        
+        var ev = e || window.event;        
+        if (ev.stopPropagation) {            
+            ev.stopPropagation();        
+        }        
+        else if (window.event) {            
+            window.event.cancelBubble = true; //兼容IE
+                    
+        }
+    })
+    document.onclick = function() {        
+        $("#zonelist").hide();
+         document.body.removeChild(oMask);    
+    }
+    $("#zonelist").click(function(e) {    
+        var ev = e || window.event;        
+        if (ev.stopPropagation) {                
+            ev.stopPropagation();         
+        }        
+        else if (window.event) {                
+            window.event.cancelBubble = true; //兼容IE
+                    
+        }
+    })
+
+    omap.onclick=function(){
+        x.style.display="none";
+    }
+
+
+
     function searchFloor() {    
         var searchFloorName = $("#search-text").val();
         if (searchFloorName.value == "") {      
@@ -47,4 +80,3 @@ window.onload = function() {
     });
 
 };
-
